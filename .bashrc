@@ -99,9 +99,9 @@ alias meteo='curl -4 http://wttr.in/Lyon'
 
 alias i='/home/sim/dev/idea-IU-143.1821.5/bin/idea.sh &'
 
-alias start='docker start grunt dbHost dbHostTest; docker attach grunt'
+alias start='docker start grunt dbHost dbHostTest dbHostTest2; docker attach grunt'
 
-alias build='docker run -v ~/.ivy2/:/root/.ivy2 --link dbHost:dbHost --link dbHostTest:dbHostTest build /bin/bash runBuild.sh'
+alias build='docker run -v ~/.ivy2/:/root/.ivy2 --link dbHost:dbHost --link dbHostTest:dbHostTest2 build /bin/bash runBuild.sh'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
