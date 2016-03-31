@@ -1,4 +1,4 @@
-PATH=$PATH:/home/sim/dev/sbt/bin
+PATH=$PATH:/home/sim/dev/sbt/bin:/home/sim/dev:/home/sim/dev/activator-dist-1.3.9/bin
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -18,8 +18,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+HISTSIZE=100000
+HISTFILESIZE=200000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -95,11 +95,15 @@ fi
 #alias la='ls -A'
 #alias l='ls -CF'
 
+alias meteo='curl -4 http://wttr.in/Lyon'
+
 alias i='/home/sim/dev/idea-IU-143.1821.5/bin/idea.sh &'
 
-alias start='docker start grunt dbHost dbHostTest; docker attach grunt'
+alias start='docker start grunt dbHost dbHostTest dbHostTest2; docker attach grunt'
 
-alias build='docker run -v ~/.ivy2/:/root/.ivy2 --link dbHost:dbHost --link dbHostTest:dbHostTest build /bin/bash runBuild.sh'
+alias build='docker run -v ~/.ivy2/:/root/.ivy2 --link dbHost:dbHost --link dbHostTest:dbHostTest2 build /bin/bash runBuild.sh'
+
+alias buildScheduler='docker run -v ~/.ivy2/:/root/.ivy2 --link schedulerDB:schedulerDB --link schedulerDBTests:schedulerDBTests build /bin/bash runBuildScheduler.sh'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
