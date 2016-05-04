@@ -1,4 +1,5 @@
-PATH=$PATH:/home/sim/dev/sbt/bin
+PATH=$PATH:/home/sim/dev/sbt/bin:/home/sim/dev:/home/sim/dev/activator-dist-1.3.9/bin:/home/sim/dev/android-sdk-linux/tools:/home/sim/dev/android-sdk-linux/build-tools:/home/sim/dev/android-sdk-linux/platform-tools:/home/sim/dev/gradle-2.12/bin:/opt/genymobile/genymotion/
+export ANDROID_HOME=/home/loann/dev/android-sdk-linux
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -18,8 +19,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+HISTSIZE=100000
+HISTFILESIZE=200000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -102,6 +103,12 @@ alias i='/home/sim/dev/idea-IU-143.1821.5/bin/idea.sh &'
 alias start='docker start grunt dbHost dbHostTest dbHostTest2; docker attach grunt'
 
 alias build='docker run -v ~/.ivy2/:/root/.ivy2 --link dbHost:dbHost --link dbHostTest:dbHostTest2 build /bin/bash runBuild.sh'
+
+alias buildScheduler='docker run -v ~/.ivy2/:/root/.ivy2 --link schedulerDB:schedulerDB --link schedulerDBTests:schedulerDBTests build /bin/bash runBuildScheduler.sh'
+
+function push { docker run -e d="$1" -v ~/.ivy2/:/root/.ivy2 --link dbHost:dbHost --link dbHostTest:dbHostTest2 -v /home/sim/dev/claude:/claude -ti push /bin/bash push.sh; }
+
+export -f push
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
