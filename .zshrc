@@ -36,11 +36,11 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-alias f='/home/sim/Franz &'
+alias f='/home/sim/Franz-linux-x64-4.0.4/Franz &'
 
 alias meteo='curl -4 http://wttr.in/Lyon'
 
-alias i='/home/sim/dev/idea-IU-163.7743.44/bin/idea.sh &'
+alias i='/home/sim/dev/idea-IU-163.9166.29/bin/idea.sh &'
 
 alias start='docker start grunt dbHost dbHostTest dbHostTest2; docker attach grunt'
 
@@ -50,7 +50,10 @@ alias build='docker run -v ~/.ivy2/:/root/.ivy2 -v ~/dev/claudeCI/buildScripts:/
 
 alias prod='ssh -o StrictHostKeyChecking=no -t debian@149.202.162.220 "/home/debian/prod.sh"'
 
-alias buildScheduler='docker run -v ~/.ivy2/:/root/.ivy2 --link schedulerDB:schedulerDB --link schedulerDBTests:schedulerDBTests build /bin/bash runBuildScheduler.sh'
+
+alias buildScheduler='docker run -v ~/.ssh:/root/.ssh/ -v ~/.ivy2/:/root/.ivy2 -v ~/dev/claudeCI/buildScripts:/root/buildScripts build /bin/bash /root/buildScripts/runBuildScheduler.sh'
+
+alias buildPriceDecision='docker run -v ~/.ssh:/root/.ssh/ -v ~/.ivy2/:/root/.ivy2 -v ~/dev/claudeCI/buildScripts:/root/buildScripts build /bin/bash /root/buildScripts/priceDecision.sh'
 
 alias r='~/resolution.sh'
 
@@ -58,7 +61,7 @@ alias r='~/resolution.sh'
 
 #export -f push
 
-PATH=$PATH:/home/sim/dev/Softwares/sbt/bin
+PATH=$PATH:/home/sim/dev/sbt/bin
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
