@@ -23,15 +23,15 @@ alias start='docker start grunt dbHost dbHostTest dbHostTest2; docker attach gru
 
 alias g='git'
 
-alias build='docker start dbHost dbHostTest dbHostTest2; docker run --net mynet123 -v ~/.ivy2/:/root/.ivy2 -v ~/dev/claudeCI/buildScripts:/root/buildScripts --link dbHostTest:dbHostTest2 build /bin/bash /root/buildScripts/runBuild.sh'
+alias build='docker start dbHost dbHostTest dbHostTest2; docker run --net mynet123 -v ~/.ivy2/:/root/.ivy2 -v ~/dev/big-claude/builds/buildScripts:/root/buildScripts --link dbHostTest:dbHostTest2 build /bin/bash /root/buildScripts/runBuild.sh'
 
-alias prod='ssh -o StrictHostKeyChecking=no -t debian@149.202.162.220 "/home/debian/prod.sh"'
+alias prod='ssh -o StrictHostKeyChecking=no -t debian@149.202.162.220 "/home/debian/startIndiTicket.sh"'
 
-alias buildScheduler='docker run -v ~/.ssh:/root/.ssh/ -v ~/.ivy2/:/root/.ivy2 -v ~/dev/claudeCI/buildScripts:/root/buildScripts build /bin/bash /root/buildScripts/runBuildScheduler.sh'
+alias buildScheduler='docker run -v ~/.ssh:/root/.ssh/ -v ~/.ivy2/:/root/.ivy2 -v ~/dev/big-claude/builds/buildScripts:/root/buildScripts build /bin/bash /root/buildScripts/runBuildScheduler.sh'
 
-alias buildPriceDecision='docker start price_decision_test; docker run --net mynet123 -v ~/.ssh:/root/.ssh/ -v ~/.ivy2/:/root/.ivy2 -v ~/dev/claudeCI/buildScripts:/root/buildScripts --link price_decision_test:price_decision_test build /bin/bash /root/buildScripts/priceDecision.sh'
+alias buildPriceDecision='docker start price_decision_test; docker run --net mynet123 -v ~/.ssh:/root/.ssh/ -v ~/.ivy2/:/root/.ivy2 -v ~/dev/big-claude/builds/buildScripts:/root/buildScripts --link price_decision_test:price_decision_test build /bin/bash /root/buildScripts/priceDecision.sh'
 
-alias buildOrgaDashboard='docker start organizerDashboardDb; docker run --net mynet123 -v ~/.ssh:/root/.ssh/ -v ~/.ivy2/:/root/.ivy2 -v ~/dev/claudeCI/buildScripts:/root/buildScripts --link organizerDashboardDb:organizerDashboardDb build /bin/bash /root/buildScripts/organizerDashboard.sh'
+alias buildOrgaDashboard='docker start organizerDashboardDb; docker run --net mynet123 -v ~/.ssh:/root/.ssh/ -v ~/.ivy2/:/root/.ivy2 -v ~/dev/big-claude/builds/buildScripts:/root/buildScripts --link organizerDashboardDb:organizerDashboardDb build /bin/bash /root/buildScripts/organizerDashboard.sh'
 
 alias r='~/resolution.sh'
 
